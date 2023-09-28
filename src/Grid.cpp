@@ -17,6 +17,7 @@ void Grid::update() {
     std::vector<std::vector<Cell>> nextGrid = grid;
     int dx[] = { -1, 0, 1, -1, 1, -1, 0, 1 };
     int dy[] = { -1, -1, -1, 0, 0, 1, 1, 1 };
+    int max_age = 100;
 
     for (int i = 0; i < grid.size(); ++i) {
         for (int j = 0; j < grid[i].size(); ++j) {
@@ -29,17 +30,34 @@ void Grid::update() {
                 }
             }
 
+            nextGrid[i][j] = grid[i][j]; 
+
             if (grid[i][j].getState()) {
                 nextGrid[i][j].setState(aliveNeighbors == 2 || aliveNeighbors == 3);
+                if (nextGrid[i][j].getState()) {
+                    nextGrid[i][j].incrementAge();
+                    if (nextGrid[i][j].getAge() > max_age) {
+                        nextGrid[i][j].setState(false);
+                    }
+                }
             }
             else {
                 nextGrid[i][j].setState(aliveNeighbors == 3);
+                if (nextGrid[i][j].getState()) {
+                    nextGrid[i][j].setAge(0);
+                }
             }
         }
     }
     grid = std::move(nextGrid);
 }
 
+
+
 bool Grid::getCellState(int x, int y) const {
     return grid[y][x].getState();
+}
+
+int Grid::getCellAge(int x, int y) const {
+	return grid[y][x].getAge();
 }

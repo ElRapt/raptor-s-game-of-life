@@ -11,4 +11,5 @@ public:
     void init(std::mt19937& mt, std::uniform_int_distribution<int>& dist);
     void update();
     bool getCellState(int x, int y) const;
+    int getCellAge(int x, int y) const;
 };
