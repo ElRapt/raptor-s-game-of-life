@@ -14,6 +14,10 @@ void Grid::init(std::mt19937& mt, std::uniform_int_distribution<int>& dist) {
 }
 
 void Grid::update() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<double> dist(0.0, 1.0);
+
     std::vector<std::vector<Cell>> nextGrid = grid;
     int dx[] = { -1, 0, 1, -1, 1, -1, 0, 1 };
     int dy[] = { -1, -1, -1, 0, 0, 1, 1, 1 };
@@ -33,8 +37,21 @@ void Grid::update() {
             nextGrid[i][j] = grid[i][j]; 
 
             if (grid[i][j].getState()) {
-                nextGrid[i][j].setState(aliveNeighbors == 2 || aliveNeighbors == 3);
-                if (nextGrid[i][j].getState()) {
+                bool stayAlive = aliveNeighbors == 2 || aliveNeighbors == 3;
+
+                double random_chance = dist(mt);
+                int age = grid[i][j].getAge();
+
+                if ((age <= 20 && random_chance < 0.001) ||
+                    (age > 20 && age <= 40 && random_chance < 0.005) ||
+                    (age > 40 && age <= 70 && random_chance < 0.01) ||
+                    (age > 70 && random_chance < 0.05)) {
+                    stayAlive = false;
+                }
+
+                nextGrid[i][j].setState(stayAlive);
+
+                if (stayAlive) {
                     nextGrid[i][j].incrementAge();
                     if (nextGrid[i][j].getAge() > max_age) {
                         nextGrid[i][j].setState(false);
@@ -51,6 +68,7 @@ void Grid::update() {
     }
     grid = std::move(nextGrid);
 }
+
 
 
 
