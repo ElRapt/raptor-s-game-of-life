@@ -3,13 +3,16 @@ project(RaptorsGameOfLife LANGUAGES CXX)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+
 include(FetchContent)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(RaptorsGameOfLife src/main.cpp)
+add_executable(RaptorsGameOfLife src/main.cpp "src/Cell.cpp" "src/Grid.cpp" "src/Game.cpp")
 target_link_libraries(RaptorsGameOfLife PRIVATE sfml-graphics)
 target_compile_features(RaptorsGameOfLife PRIVATE cxx_std_17)
 
