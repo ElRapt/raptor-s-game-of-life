@@ -48,7 +48,7 @@ This repository contains a custom implementation of Conway's Game of Life in C++
 
 Run the executable generated in the `build` directory:
 ```bash
-./game_of_life
+./RaptorsGameOfLife
 ```
 
 ## Contributing
