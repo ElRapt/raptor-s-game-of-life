@@ -1,6 +1,11 @@
 
 # Raptor's Game of Life
 
+![GitHub](https://img.shields.io/github/license/ElRapt/raptor-s-game-of-life)
+![Language](https://img.shields.io/badge/Language-C++-darkblue)
+![Library](https://img.shields.io/badge/Builder-CMake-yellow)
+![Size](https://img.shields.io/badge/Size-1MB-yellowgreen)
+
 ## Description
 This repository contains a custom implementation of Conway's Game of Life in C++, using CMake. The project includes automated build and test configurations.
 
