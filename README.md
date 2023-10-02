@@ -23,6 +23,7 @@ This repository contains a custom implementation of Conway's Game of Life in C++
 ### Prerequisites
 - C++ compiler (supporting C++11 or above)
 - CMake (Version 3.10 or higher)
+- SFML library
 
 ### Steps
 1. Clone the repository
