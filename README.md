@@ -3,7 +3,8 @@
 
 ![GitHub](https://img.shields.io/github/license/ElRapt/raptor-s-game-of-life)
 ![Language](https://img.shields.io/badge/Language-C++-darkblue)
-![Library](https://img.shields.io/badge/Builder-CMake-yellow)
+![Builder](https://img.shields.io/badge/Builder-CMake-yellow)
+![GUI](https://img.shields.io/badge/GUI-SFML-red)
 ![Size](https://img.shields.io/badge/Size-1MB-yellowgreen)
 
 ## Description
