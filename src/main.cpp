@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 int main() {
-    Game game(100, 100);
+    Game game(50, 50);
     game.run();
     return 0;
 }

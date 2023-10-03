@@ -29,22 +29,20 @@ std::vector<sf::Vector2f> calculateHexagonVertices(float centerX, float centerY,
 }
 
 void Game::run() {
-    // Calculate the necessary dimensions
-    int windowWidth = 1920;
-    int windowHeight = 1080;
-    float hexRadius = (windowWidth / 50) / 1.73205080757f;  // 1.732... is sqrt(3)
+    // Fixed hexagon radius, as per your requirement
+    float hexRadius = 20.0f;
     float dx = hexRadius * sqrt(3);
     float dy = hexRadius * 1.5;
 
-    // Abusing CircleShape, since a circle with 6 points is a hexagon
+    // Create a hexagon using CircleShape with 6 points
     sf::CircleShape hexagon(hexRadius, 6);
-    hexagon.setOutlineThickness(1);  
+    hexagon.setOutlineThickness(1);
     hexagon.setOrigin(hexRadius, hexRadius);
     hexagon.setOutlineColor(sf::Color::Black);
 
-    // Calculate the offsets to center the grid
-    float offsetX = (windowWidth - dx * 50) / 2;
-    float offsetY = (windowHeight - dy * 50) / 2;
+    // Calculate the offsets to center the grid based on dynamic width and height
+    float offsetX = (1920 - dx * grid.width) / 2;
+    float offsetY = (1080 - dy * grid.height) / 2;
 
     while (window.isOpen()) {
         for (auto event = sf::Event{}; window.pollEvent(event);) {
@@ -53,10 +51,10 @@ void Game::run() {
             }
         }
 
-        window.clear(); 
+        window.clear();  // Clear to background color
 
-        for (int y = 0; y < 50; ++y) {
-            for (int x = 0; x < 50; ++x) {
+        for (int y = 0; y < grid.height; ++y) {
+            for (int x = 0; x < grid.width; ++x) {
                 int age = grid.getCellAge(x, y);
                 sf::Uint8 red = static_cast<sf::Uint8>(255 * age / maxAge);
 

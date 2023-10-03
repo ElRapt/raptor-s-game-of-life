@@ -2,8 +2,11 @@
 #include <random>
 
 Grid::Grid(int width, int height) {
+    this->width = width;
+    this->height = height;
     grid.resize(height, std::vector<Cell>(width));
 }
+
 
 void Grid::init() {
     std::random_device rd;

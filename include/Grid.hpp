@@ -8,10 +8,14 @@ private:
     const int maxAge = 100;  // Maximum age for cells
 
 public:
+    int width;
+    int height;
     Grid(int width, int height);
     void init();
     void update();
     bool getCellState(int x, int y) const;
     int getCellAge(int x, int y) const;
     void countAliveNeighbors(int x, int y, int& aliveNeighbors) const;
+
+
 };
