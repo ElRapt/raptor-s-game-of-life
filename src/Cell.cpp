@@ -1,23 +1,24 @@
 #include "Cell.hpp"
 
-Cell::Cell() : isAlive(false), age(0) {}
+// Initialize with default or given values
+Cell::Cell(bool isAlive, int age) : isAlive(isAlive), age(age) {}
 
 void Cell::setState(bool state) {
-	isAlive = state;
+    isAlive = state;
 }
 
 bool Cell::getState() const {
-	return isAlive;
+    return isAlive;
 }
 
-void Cell::incrementAge() {
-	age++;
+void Cell::incrementAge(int incrementValue) {
+    age += incrementValue;
 }
 
 int Cell::getAge() const {
-	return age;
+    return age;
 }
 
 void Cell::setAge(int newAge) {
-	age = newAge;
+    age = newAge;
 }
