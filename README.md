@@ -10,8 +10,15 @@
 ## Description
 This repository contains a custom implementation of Conway's Game of Life in C++, using CMake. The project includes automated build and test configurations.
 
+## Features
+- **Aging Cells**: Cells in the grid age as the game progresses, affecting their color and making them more prone to death by natural causes.
+- **Mersenne Twister Random Number Generation**: Utilizes the Mersenne Twister algorithm for generating high-quality pseudo-random numbers, providing more unpredictable and natural patterns in the game grid.
+- **Hexagonal Grids**: Cells are arranged in a hexagonal pattern, adding a unique twist to the game dynamics.
+- **Pausable**: The game can be paused and resumed by pressing the 'P' key.
+
 ## Table of Contents
 - [Description](#description)
+- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
